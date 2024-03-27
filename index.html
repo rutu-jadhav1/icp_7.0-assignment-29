@@ -4,23 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 29</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <style>
+        .oswald-uniquifier {
+            font-family: "Oswald", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+          }
         body{
-            font-family: Arial, Helvetica, sans-serif;
             text-align: center;
-            padding-top: 50px;
             font-size: 48px;
+            background-color: #4158D0;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            min-height: 100vh;
+        }
+        .container{
+            background-color: white;
+            height: 250px;
+            margin: 10%;
+            padding-top: 10px;
+        }
+        .date-box{
+            height: 20px;
+        }
+        .btn{
+            height: 28px;
+            width: 180px;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            border: none;
+            color: white;
+            font-weight: 800;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .result{
+            color: white;
+            font-weight: 800;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container{
+                height: 80%;
+                font-size:40px;
+            }
+            .btn{
+                height: 25px;
+                width: 130px;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
-<body>
-    <label for="date">Enter Date's to Calculate Difference :</label>
-    <input type="date" id="date1">
-    <input type="date" id="date2">
-    <button onclick="calculate()">Calculate</button>
+<body class="oswald-uniquifier">
+    <div class="container">
+        <label for="date">Enter Date's to Calculate Difference :</label>
+        <br>
+        <input type="date" id="date1" class="date-box">
+        <input type="date" id="date2" class="date-box">
+        <br>
+        <button onclick="calculate()" class="btn">Calculate</button>
+        <button type="button" class="btn" onclick="reset()">Reset</button>
+        <p id="result" class="result">
 
-    <div id="result">
-
+        </p>
     </div>
    
     <script>
@@ -53,8 +102,17 @@
                monthDiffr = endDate.getMonth() - startDate.getMonth();
                dateDiffr = endDate.getDate() - startDate.getDate();
             }
-            document.getElementById('result').innerText = `${yearDiffr} Years :${monthDiffr} Months:${dateDiffr} Days `; 
+            document.getElementById('result').innerText = `${yearDiffr} Years : ${monthDiffr} Months : ${dateDiffr} Days `; 
           
+        }
+
+        function reset(){
+            const input1 = document.getElementById("date1");
+            const input2 = document.getElementById("date2");
+            const result = document.getElementById("result");
+            input1.value = "";
+            input2.value = "";
+            result.innerText = "";
         }
         
        </script>
